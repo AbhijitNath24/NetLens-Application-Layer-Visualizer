@@ -1,0 +1,757 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>NetLens | Application Layer Visualizer</title>
+
+    <link rel="stylesheet" href="/static/styles.css">
+    <link rel="icon" type="image/svg+xml" href="/static/favicon.svg">
+</head>
+
+<body>
+
+    <!-- =========================================
+         APPLICATION HEADER
+    ========================================== -->
+
+    <header class="top-header">
+
+        <div class="brand-area">
+
+            <div class="brand-icon">
+                NL
+            </div>
+
+            <div>
+                <h1>NetLens</h1>
+
+                <p>
+                    Application Layer Mission Control
+                </p>
+            </div>
+
+        </div>
+
+
+        <div class="system-status">
+
+            <span class="status-light"></span>
+
+            SYSTEM ONLINE
+
+        </div>
+
+    </header>
+
+
+
+    <!-- =========================================
+         MAIN DASHBOARD
+         EXACTLY TWO MAIN PANELS
+    ========================================== -->
+
+    <main class="dashboard">
+
+
+        <!-- =====================================
+             PANEL 01 — ACTIVITY PANEL
+        ====================================== -->
+
+        <section class="panel activity-panel">
+
+            <div class="panel-header">
+
+                <div>
+
+                    <span class="panel-number">
+                        01
+                    </span>
+
+                    <h2>
+                        Activity Console
+                    </h2>
+
+                </div>
+
+
+                <span class="activity-status">
+                    IDLE
+                </span>
+
+            </div>
+
+
+
+            <!-- Activity Selector -->
+
+            <div class="activity-selector">
+
+                <button
+                    class="activity-tab active"
+                    id="browseTab">
+
+                    🌐 Browse
+
+                </button>
+
+
+                <button
+                    class="activity-tab"
+                    id="mailTab">
+
+                    ✉ Mail
+
+                </button>
+
+
+                <button
+                    class="activity-tab"
+                    id="streamTab">
+
+                    ▶ Stream
+
+                </button>
+
+            </div>
+
+
+
+            <!-- =================================
+                 BROWSING AREA
+            ================================== -->
+
+            <div
+                class="activity-content"
+                id="browseActivity">
+
+                <div class="section-heading">
+
+                    <span>
+                        WEB BROWSING
+                    </span>
+
+                    <small>
+                        DNS + HTTP
+                    </small>
+
+                </div>
+
+
+                <label for="urlInput">
+
+                    Destination URL
+
+                </label>
+
+
+                <div class="url-input">
+
+                    <span>
+                        https://
+                    </span>
+
+                    <input
+                        type="text"
+                        id="urlInput"
+                        value="example.com"
+                        placeholder="Enter website">
+
+                </div>
+
+
+                <button
+                    class="primary-action"
+                    id="visitButton">
+
+                    VISIT PAGE
+
+                    <span>
+                        →
+                    </span>
+
+                </button>
+
+
+                <p class="helper-text">
+
+                    Simulated browser request.
+                    Watch DNS and HTTP unfold on the right.
+
+                </p>
+
+            </div>
+
+
+
+            <!-- =================================
+                 MAIL AREA
+            ================================== -->
+
+            <div
+                class="activity-content hidden"
+                id="mailActivity">
+
+                <div class="section-heading">
+
+                    <span>
+                        MAIL COMPOSER
+                    </span>
+
+                    <small>
+                        SMTP
+                    </small>
+
+                </div>
+
+
+                <label for="mailTo">
+                    To
+                </label>
+
+                <input
+                    type="email"
+                    id="mailTo"
+                    placeholder="recipient@example.com">
+
+
+                <label for="mailSubject">
+                    Subject
+                </label>
+
+                <input
+                    type="text"
+                    id="mailSubject"
+                    placeholder="Email subject">
+
+
+                <label for="mailBody">
+                    Message
+                </label>
+
+                <textarea
+                    id="mailBody"
+                    rows="5"
+                    placeholder="Write your message..."></textarea>
+
+
+                <button
+                    class="primary-action"
+                    id="sendMailButton">
+
+                    SEND MESSAGE
+
+                    <span>
+                        →
+                    </span>
+
+                </button>
+
+
+                <p class="helper-text">
+
+                    Simulated SMTP conversation.
+
+                </p>
+
+            </div>
+
+
+
+            <!-- =================================
+                 STREAMING AREA
+            ================================== -->
+
+            <div
+                class="activity-content hidden"
+                id="streamActivity">
+
+                <div class="section-heading">
+
+                    <span>
+                        MEDIA STREAM
+                    </span>
+
+                    <small>
+                        DNS + HTTP
+                    </small>
+
+                </div>
+
+
+                <div class="stream-card">
+
+                    <div class="stream-icon">
+                        ▶
+                    </div>
+
+
+                    <div class="stream-information">
+
+                        <strong>
+                            Packet Stories
+                        </strong>
+
+                        <span>
+                            Simulated network stream
+                        </span>
+
+                    </div>
+
+
+                    <div
+                        class="stream-time"
+                        id="streamTime">
+
+                        00:00
+
+                    </div>
+
+                </div>
+
+
+                <label for="quality">
+
+                    Streaming Quality
+
+                </label>
+
+
+                <select id="quality">
+
+                    <option value="360p">
+                        360p — Low
+                    </option>
+
+                    <option value="720p" selected>
+                        720p — Balanced
+                    </option>
+
+                    <option value="1080p">
+                        1080p — High
+                    </option>
+
+                </select>
+
+
+                <div class="stream-controls">
+
+                    <button
+                        class="primary-action"
+                        id="playStreamButton">
+
+                        PLAY ▶
+
+                    </button>
+
+
+                    <button
+                        class="secondary-action"
+                        id="pauseStreamButton">
+
+                        PAUSE ❚❚
+
+                    </button>
+
+                </div>
+
+
+                <p class="helper-text">
+
+                    Simulated manifest and media
+                    segment requests.
+
+                </p>
+
+            </div>
+
+
+
+            <!-- =================================
+                 ACTIVITY LOG
+            ================================== -->
+
+            <div class="activity-log-section">
+
+                <div class="log-heading">
+
+                    <span>
+                        ACTIVITY LOG
+                    </span>
+
+                    <small id="eventCount">
+                        0 EVENTS
+                    </small>
+
+                </div>
+
+
+                <div
+                    class="activity-log"
+                    id="activityLog">
+
+                    <div class="empty-log">
+
+                        No activity yet.
+
+                        <br>
+
+                        Start a mission above.
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =====================================
+             PANEL 02 — PROTOCOL VISUALIZER
+        ====================================== -->
+
+        <section class="panel protocol-panel">
+
+            <div class="panel-header">
+
+                <div>
+
+                    <span class="panel-number">
+                        02
+                    </span>
+
+                    <h2>
+                        Protocol Observatory
+                    </h2>
+
+                </div>
+
+
+                <div class="live-status">
+
+                    <span class="pulse-dot"></span>
+
+                    WAITING
+
+                </div>
+
+            </div>
+
+
+
+       
+
+
+<!-- LIVE NETWORK STATUS -->
+<div class="live-network-status" id="liveNetworkStatus">
+
+    <div class="live-status-indicator">
+        <span class="live-status-dot"></span>
+
+        <span id="liveStatusText">
+            WAITING FOR ACTIVITY
+        </span>
+    </div>
+
+    <div class="live-status-detail">
+
+        <span class="live-status-label" id="liveStatusProtocol">
+            SYSTEM
+        </span>
+
+        <span class="live-status-message" id="liveStatusMessage">
+            Ready to observe application-layer traffic
+        </span>
+
+    </div>
+
+</div>
+
+
+<!-- Protocol Summary -->
+
+<div class="protocol-summary">
+
+    <div class="summary-box">
+
+                    <span>
+                        CURRENT FLOW
+                    </span>
+
+                    <strong id="currentFlow">
+                        No active flow
+                    </strong>
+
+                </div>
+
+
+                <div class="summary-box">
+
+                    <span>
+                        STEP
+                    </span>
+
+                    <strong id="currentStep">
+                        0 / 0
+                    </strong>
+
+                </div>
+
+
+                <div class="summary-box">
+
+                    <span>
+                        PROTOCOL
+                    </span>
+
+                    <strong id="currentProtocol">
+                        —
+                    </strong>
+
+                </div>
+
+
+                <div class="summary-box">
+
+                    <span>
+                        LATENCY
+                    </span>
+
+                    <strong id="latency">
+                        —
+                    </strong>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- Protocol Timeline -->
+
+            <div class="timeline-section">
+
+                <div class="timeline-line">
+
+                    <div
+                        class="timeline-progress"
+                        id="timelineProgress">
+                    </div>
+
+                </div>
+
+
+                <div
+                    class="timeline-points"
+                    id="timelinePoints">
+
+                </div>
+
+            </div>
+
+
+
+            <!-- Client Server Wire -->
+
+            <div class="network-wire">
+
+                <div class="wire-endpoint client">
+
+                    <div class="endpoint-icon">
+                        C
+                    </div>
+
+                    <span>
+                        CLIENT
+                    </span>
+
+                </div>
+
+
+                <div class="wire-connection">
+
+                    <div
+                        class="packet-arrow"
+                        id="packetArrow">
+                    </div>
+
+                </div>
+
+
+                <div class="wire-endpoint server">
+
+                    <div class="endpoint-icon">
+                        S
+                    </div>
+
+                    <span id="serverName">
+                        SERVER
+                    </span>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- Message Inspector -->
+
+            <div class="message-inspector">
+
+                <div class="inspector-header">
+
+                    <span>
+                        MESSAGE INSPECTOR
+                    </span>
+
+
+                    <span
+                        class="direction"
+                        id="messageDirection">
+
+                        —
+
+                    </span>
+
+                </div>
+
+
+                <div
+                    class="message-card"
+                    id="messageCard">
+
+                    <div class="empty-message">
+
+                        <div class="empty-icon">
+                            ◇
+                        </div>
+
+                        <h3>
+                            Awaiting activity
+                        </h3>
+
+                        <p>
+                            Perform an action on the
+                            left panel to begin the
+                            protocol visualization.
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- Visualization Controls -->
+
+            <div class="visualization-controls">
+
+                <button
+                    class="control-button"
+                    id="previousButton">
+
+                    ← PREVIOUS
+
+                </button>
+
+
+                <button
+                    class="control-button accent"
+                    id="pauseButton">
+
+                    PAUSE
+
+                </button>
+
+
+                <button
+                    class="control-button"
+                    id="nextButton">
+
+                    NEXT →
+
+                </button>
+
+
+                <button
+                    class="control-button"
+                    id="replayButton">
+
+                    ↻ REPLAY
+
+                </button>
+
+            </div>
+
+
+
+            <!-- Legend -->
+
+            <div class="protocol-legend">
+
+                <span>
+
+                    <i class="legend-client"></i>
+
+                    Client → Server
+
+                </span>
+
+
+                <span>
+
+                    <i class="legend-server"></i>
+
+                    Server → Client
+
+                </span>
+
+
+                <span>
+
+                    <i class="legend-time"></i>
+
+                    Simulated timing
+
+                </span>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+
+  <!-- NetLens Footer -->
+<footer class="netlens-footer">
+
+    <div class="footer-left">
+        <span>NETLENS v1.0</span>
+        <span>Application Layer Visualizer</span>
+    </div>
+
+    <div class="footer-center">
+        Educational Protocol Simulation
+    </div>
+
+    <div class="footer-right">
+        <span>FastAPI</span>
+        <span>HTML</span>
+        <span>CSS</span>
+        <span>JavaScript</span>
+    </div>
+
+</footer>
+
+<script src="/static/app.js"></script>
+
+</body>
+</html>
