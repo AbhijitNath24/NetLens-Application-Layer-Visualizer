@@ -3308,3 +3308,831 @@ footer {
         order: 3;
     }
 }
+
+/* ============================================================
+   NETLENS ASSIGNMENT 2
+   APPLICATION + TRANSPORT LAYER VIEW
+   ============================================================ */
+
+/* ------------------------------------------------------------
+   VIEW SWITCH
+   ------------------------------------------------------------ */
+
+.protocol-view-switch {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+
+    margin: 14px 20px 0;
+    padding: 10px 12px;
+
+    border: 1px solid var(--border);
+    border-radius: 10px;
+
+    background: #07131c;
+}
+
+.view-switch-title {
+    color: var(--muted);
+    font-size: 8px;
+    font-weight: 900;
+    letter-spacing: 0.1em;
+}
+
+.view-switch-buttons {
+    display: flex;
+    gap: 5px;
+}
+
+.view-tab {
+    padding: 8px 11px;
+
+    border: 1px solid var(--border);
+    border-radius: 7px;
+
+    background: #09151e;
+    color: var(--muted);
+
+    font-size: 8px;
+    font-weight: 900;
+    letter-spacing: 0.04em;
+
+    transition: 0.2s ease;
+}
+
+.view-tab:hover {
+    color: var(--text);
+    border-color: var(--border-light);
+}
+
+.view-tab.active {
+    background: rgba(41, 214, 197, 0.10);
+    border-color: rgba(41, 214, 197, 0.45);
+    color: var(--cyan);
+
+    box-shadow:
+        0 0 15px rgba(41, 214, 197, 0.06);
+}
+
+
+/* ------------------------------------------------------------
+   TRANSPORT LAYER FIELD AREA
+   ------------------------------------------------------------ */
+
+.transport-fields {
+    display: grid;
+
+    grid-template-columns:
+        repeat(2, 1fr);
+
+    gap: 8px;
+
+    margin-top: 12px;
+}
+
+.transport-field {
+    padding: 9px 10px;
+
+    border: 1px solid var(--border);
+    border-radius: 7px;
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(41, 214, 197, 0.035),
+            rgba(255,255,255,0.01)
+        );
+}
+
+.transport-field span {
+    display: block;
+
+    margin-bottom: 4px;
+
+    color: var(--muted-dark);
+
+    font-size: 7px;
+    font-weight: 950;
+
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+}
+
+.transport-field strong {
+    display: block;
+
+    color: var(--text);
+
+    font-family:
+        "Consolas",
+        "Courier New",
+        monospace;
+
+    font-size: 11px;
+
+    word-break: break-word;
+}
+
+
+/* ------------------------------------------------------------
+   TCP FLAGS
+   ------------------------------------------------------------ */
+
+.tcp-flags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+
+    margin-top: 12px;
+}
+
+.tcp-flag {
+    padding: 5px 8px;
+
+    border: 1px solid var(--border);
+    border-radius: 5px;
+
+    background: #09151e;
+
+    color: var(--muted);
+
+    font-family:
+        "Consolas",
+        "Courier New",
+        monospace;
+
+    font-size: 8px;
+    font-weight: 900;
+}
+
+.tcp-flag.syn {
+    color: var(--cyan);
+    border-color: rgba(41, 214, 197, 0.35);
+    background: rgba(41, 214, 197, 0.07);
+}
+
+.tcp-flag.ack {
+    color: var(--blue);
+    border-color: rgba(99, 143, 255, 0.35);
+    background: rgba(99, 143, 255, 0.07);
+}
+
+.tcp-flag.psh {
+    color: var(--orange);
+    border-color: rgba(255, 189, 104, 0.35);
+    background: rgba(255, 189, 104, 0.07);
+}
+
+.tcp-flag.fin {
+    color: var(--green);
+    border-color: rgba(94, 228, 161, 0.35);
+    background: rgba(94, 228, 161, 0.07);
+}
+
+.tcp-flag.rst {
+    color: var(--red);
+    border-color: rgba(255, 102, 117, 0.35);
+    background: rgba(255, 102, 117, 0.07);
+}
+
+
+/* ------------------------------------------------------------
+   TRANSPORT STATE
+   ------------------------------------------------------------ */
+
+.transport-state {
+    display: flex;
+
+    align-items: center;
+    justify-content: space-between;
+
+    gap: 10px;
+
+    margin-top: 12px;
+    padding: 9px 10px;
+
+    border: 1px solid var(--border);
+    border-radius: 7px;
+
+    background: rgba(6, 16, 24, 0.55);
+}
+
+.transport-state-label {
+    color: var(--muted-dark);
+
+    font-size: 7px;
+    font-weight: 950;
+
+    letter-spacing: 0.1em;
+}
+
+.transport-state-value {
+    color: var(--cyan);
+
+    font-family:
+        "Consolas",
+        "Courier New",
+        monospace;
+
+    font-size: 9px;
+    font-weight: 900;
+}
+
+
+/* ------------------------------------------------------------
+   TRANSPORT STATUS
+   ------------------------------------------------------------ */
+
+.transport-status {
+    display: inline-flex;
+
+    align-items: center;
+
+    padding: 5px 8px;
+
+    border-radius: 5px;
+
+    border: 1px solid rgba(41, 214, 197, 0.2);
+
+    background: rgba(41, 214, 197, 0.07);
+
+    color: var(--cyan);
+
+    font-size: 7px;
+    font-weight: 950;
+
+    letter-spacing: 0.08em;
+}
+
+
+/* ------------------------------------------------------------
+   TRANSPORT PACKET HIGHLIGHT
+   ------------------------------------------------------------ */
+
+.transport-packet-highlight {
+    position: relative;
+
+    margin-top: 10px;
+    padding: 10px;
+
+    border-left:
+        3px solid
+        var(--cyan);
+
+    border-radius:
+        0
+        7px
+        7px
+        0;
+
+    background:
+        linear-gradient(
+            90deg,
+            rgba(41, 214, 197, 0.07),
+            transparent
+        );
+
+    color: var(--muted);
+
+    font-size: 8px;
+
+    line-height: 1.5;
+}
+
+.transport-packet-highlight strong {
+    color: var(--text);
+}
+
+
+/* ------------------------------------------------------------
+   PROTOCOL BADGES
+   ------------------------------------------------------------ */
+
+.protocol-badge.transport {
+    color: var(--cyan);
+
+    border-color:
+        rgba(41, 214, 197, 0.3);
+
+    background:
+        rgba(41, 214, 197, 0.08);
+}
+
+.protocol-badge.tcp {
+    color: var(--blue);
+
+    border-color:
+        rgba(99, 143, 255, 0.3);
+
+    background:
+        rgba(99, 143, 255, 0.08);
+}
+
+.protocol-badge.udp {
+    color: var(--orange);
+
+    border-color:
+        rgba(255, 189, 104, 0.3);
+
+    background:
+        rgba(255, 189, 104, 0.08);
+}
+
+
+/* ------------------------------------------------------------
+   TRANSPORT DIRECTION
+   ------------------------------------------------------------ */
+
+.transport-direction-client {
+    color: var(--cyan);
+}
+
+.transport-direction-server {
+    color: var(--orange);
+}
+
+
+/* ------------------------------------------------------------
+   TRANSPORT MESSAGE CARD
+   ------------------------------------------------------------ */
+
+.message-card.transport-mode {
+    border-color:
+        rgba(99, 143, 255, 0.25);
+
+    box-shadow:
+        0 0 25px rgba(99, 143, 255, 0.04);
+}
+
+
+/* ------------------------------------------------------------
+   SYN / SYN-ACK VISUAL EMPHASIS
+   ------------------------------------------------------------ */
+
+.message-card.tcp-handshake {
+    border-color:
+        rgba(41, 214, 197, 0.35);
+
+    box-shadow:
+        0 0 25px rgba(41, 214, 197, 0.07);
+}
+
+
+/* ------------------------------------------------------------
+   FIN / TEARDOWN VISUAL EMPHASIS
+   ------------------------------------------------------------ */
+
+.message-card.tcp-teardown {
+    border-color:
+        rgba(94, 228, 161, 0.3);
+
+    box-shadow:
+        0 0 25px rgba(94, 228, 161, 0.05);
+}
+
+
+/* ------------------------------------------------------------
+   TRANSPORT TIMING
+   ------------------------------------------------------------ */
+
+.transport-timing {
+    display: flex;
+
+    align-items: center;
+    justify-content: space-between;
+
+    margin-top: 10px;
+
+    color: var(--muted-dark);
+
+    font-family:
+        "Consolas",
+        "Courier New",
+        monospace;
+
+    font-size: 8px;
+}
+
+.transport-timing strong {
+    color: var(--blue);
+}
+
+
+/* ------------------------------------------------------------
+   RESPONSIVE TRANSPORT VIEW
+   ------------------------------------------------------------ */
+
+@media (max-width: 700px) {
+
+    .protocol-view-switch {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
+    .view-switch-buttons {
+        width: 100%;
+    }
+
+    .view-tab {
+        flex: 1;
+    }
+
+    .transport-fields {
+        grid-template-columns: 1fr;
+    }
+
+}
+
+/* ============================================================
+   ASSIGNMENT 2 - VIEW SWITCH FIX
+   ============================================================ */
+
+.protocol-view-switch {
+    display: flex !important;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+
+    margin: 14px 20px 0 !important;
+    padding: 10px 12px !important;
+
+    border: 1px solid var(--border) !important;
+    border-radius: 10px;
+
+    background: #07131c !important;
+}
+
+.view-switch-title {
+    color: var(--muted) !important;
+    font-size: 8px !important;
+    font-weight: 900;
+    letter-spacing: 0.1em;
+}
+
+.view-switch-buttons {
+    display: flex !important;
+    gap: 5px;
+}
+
+.view-tab {
+    appearance: none !important;
+    -webkit-appearance: none !important;
+
+    padding: 8px 11px !important;
+
+    border: 1px solid var(--border) !important;
+    border-radius: 7px !important;
+
+    background: #09151e !important;
+    color: var(--muted) !important;
+
+    font-family: inherit !important;
+    font-size: 8px !important;
+    font-weight: 900 !important;
+    letter-spacing: 0.04em;
+
+    cursor: pointer;
+
+    transition: 0.2s ease;
+}
+
+.view-tab:hover {
+    color: var(--text) !important;
+    border-color: var(--border-light) !important;
+}
+
+.view-tab.active {
+    background: rgba(41, 214, 197, 0.10) !important;
+    border-color: rgba(41, 214, 197, 0.45) !important;
+    color: var(--cyan) !important;
+
+    box-shadow:
+        0 0 15px rgba(41, 214, 197, 0.06);
+}
+
+
+/* Transport fields */
+
+.transport-fields {
+    display: grid !important;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 8px;
+    margin-top: 12px;
+}
+
+.transport-field {
+    padding: 9px 10px;
+
+    border: 1px solid var(--border);
+    border-radius: 7px;
+
+    background: rgba(41, 214, 197, 0.035);
+}
+
+.transport-field span {
+    display: block;
+    margin-bottom: 4px;
+
+    color: var(--muted-dark);
+
+    font-size: 7px;
+    font-weight: 950;
+
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+}
+
+.transport-field strong {
+    display: block;
+
+    color: var(--text);
+
+    font-family: Consolas, "Courier New", monospace;
+    font-size: 11px;
+
+    word-break: break-word;
+}
+
+
+/* TCP flags */
+
+.tcp-flags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-top: 12px;
+}
+
+.tcp-flag {
+    padding: 5px 8px;
+
+    border: 1px solid var(--border);
+    border-radius: 5px;
+
+    background: #09151e;
+
+    color: var(--muted);
+
+    font-family: Consolas, "Courier New", monospace;
+    font-size: 8px;
+    font-weight: 900;
+}
+
+.tcp-flag.syn {
+    color: var(--cyan);
+    border-color: rgba(41, 214, 197, 0.35);
+    background: rgba(41, 214, 197, 0.07);
+}
+
+.tcp-flag.ack {
+    color: var(--blue);
+    border-color: rgba(99, 143, 255, 0.35);
+    background: rgba(99, 143, 255, 0.07);
+}
+
+.tcp-flag.psh {
+    color: var(--orange);
+    border-color: rgba(255, 189, 104, 0.35);
+    background: rgba(255, 189, 104, 0.07);
+}
+
+.tcp-flag.fin {
+    color: var(--green);
+    border-color: rgba(94, 228, 161, 0.35);
+    background: rgba(94, 228, 161, 0.07);
+}
+
+.tcp-flag.rst {
+    color: var(--red);
+    border-color: rgba(255, 102, 117, 0.35);
+    background: rgba(255, 102, 117, 0.07);
+}
+
+
+/* Transport state */
+
+.transport-state {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    gap: 10px;
+
+    margin-top: 12px;
+    padding: 9px 10px;
+
+    border: 1px solid var(--border);
+    border-radius: 7px;
+
+    background: rgba(6, 16, 24, 0.55);
+}
+
+.transport-state-label {
+    color: var(--muted-dark);
+
+    font-size: 7px;
+    font-weight: 950;
+
+    letter-spacing: 0.1em;
+}
+
+.transport-state-value {
+    color: var(--cyan);
+
+    font-family: Consolas, "Courier New", monospace;
+
+    font-size: 9px;
+    font-weight: 900;
+}
+
+
+/* Transport status */
+
+.transport-status {
+    display: inline-flex;
+    align-items: center;
+
+    margin-top: 10px;
+
+    padding: 5px 8px;
+
+    border-radius: 5px;
+
+    border: 1px solid rgba(41, 214, 197, 0.2);
+
+    background: rgba(41, 214, 197, 0.07);
+
+    color: var(--cyan);
+
+    font-size: 7px;
+    font-weight: 950;
+
+    letter-spacing: 0.08em;
+}
+
+
+/* Packet highlight */
+
+.transport-packet-highlight {
+    position: relative;
+
+    margin-top: 10px;
+    padding: 10px;
+
+    border-left: 3px solid var(--cyan);
+
+    border-radius: 0 7px 7px 0;
+
+    background:
+        linear-gradient(
+            90deg,
+            rgba(41, 214, 197, 0.07),
+            transparent
+        );
+
+    color: var(--muted);
+
+    font-size: 8px;
+    line-height: 1.5;
+}
+
+.transport-packet-highlight strong {
+    color: var(--text);
+}
+
+
+/* Protocol badges */
+
+.protocol-badge.transport {
+    color: var(--cyan);
+    border-color: rgba(41, 214, 197, 0.3);
+    background: rgba(41, 214, 197, 0.08);
+}
+
+.protocol-badge.tcp {
+    color: var(--blue);
+    border-color: rgba(99, 143, 255, 0.3);
+    background: rgba(99, 143, 255, 0.08);
+}
+
+.protocol-badge.udp {
+    color: var(--orange);
+    border-color: rgba(255, 189, 104, 0.3);
+    background: rgba(255, 189, 104, 0.08);
+}
+
+
+/* Direction */
+
+.transport-direction-client {
+    color: var(--cyan);
+}
+
+.transport-direction-server {
+    color: var(--orange);
+}
+
+
+/* Transport message */
+
+.message-card.transport-mode {
+    border-color: rgba(99, 143, 255, 0.25);
+
+    box-shadow:
+        0 0 25px rgba(99, 143, 255, 0.04);
+}
+
+.message-card.tcp-handshake {
+    border-color: rgba(41, 214, 197, 0.35);
+
+    box-shadow:
+        0 0 25px rgba(41, 214, 197, 0.07);
+}
+
+.message-card.tcp-teardown {
+    border-color: rgba(94, 228, 161, 0.3);
+
+    box-shadow:
+        0 0 25px rgba(94, 228, 161, 0.05);
+}
+
+
+/* Timing */
+
+.transport-timing {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    margin-top: 10px;
+
+    color: var(--muted-dark);
+
+    font-family: Consolas, "Courier New", monospace;
+    font-size: 8px;
+}
+
+.transport-timing strong {
+    color: var(--blue);
+}
+
+
+/* Mobile */
+
+@media (max-width: 700px) {
+
+    .protocol-view-switch {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
+    .view-switch-buttons {
+        width: 100%;
+    }
+
+    .view-tab {
+        flex: 1;
+    }
+
+    .transport-fields {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* ============================================================
+   ASSIGNMENT 2 - FINAL VIEW SWITCH HEADING FIX
+   ============================================================ */
+
+.view-switch-heading {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.view-switch-heading > span {
+    color: var(--muted);
+    font-size: 8px;
+    font-weight: 900;
+    letter-spacing: 0.1em;
+}
+
+.view-switch-heading > small {
+    color: var(--cyan);
+    font-size: 8px;
+    font-weight: 900;
+    letter-spacing: 0.08em;
+}
+
+.view-switch-buttons {
+    display: flex !important;
+    align-items: center;
+    gap: 5px;
+}
+
+.view-tab {
+    appearance: none !important;
+    -webkit-appearance: none !important;
+    cursor: pointer !important;
+}
+

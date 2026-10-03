@@ -1,555 +1,153 @@
-# AI Usage Log — NetLens
+# NetLens --- AI Usage Log
 
-## Application Layer Protocol Visualizer
+## Assignment 2
 
----
+### AI Platform and Model
 
-# 1. Purpose
+**Platform:** OpenAI ChatGPT\
+**Model:** GPT-5.6 Luna
 
-Artificial Intelligence tools were used as development assistance during the creation of the NetLens Application Layer Protocol Visualizer.
+The AI assistant was used as a substantial coding and debugging partner
+during the extension of the Assignment 1 NetLens project.
 
-The purpose of using AI was to support:
+Evidence for submission can be provided using screenshots of the ChatGPT
+development conversation showing the prompts, generated code, debugging
+iterations, and final testing.
 
-- project planning,
-- interface design,
-- code organization,
-- protocol sequence development,
-- debugging,
-- documentation,
-- testing ideas,
-- and reflection writing.
+## Development Record
 
-AI-generated suggestions were reviewed and adapted during implementation.
+### 1. Assignment analysis and architecture
 
-The final project was assembled, tested, and modified in Visual Studio Code.
+**Prompt/task:** Extend the existing Assignment 1 dual-panel dashboard
+for Assignment 2 while keeping the left Activity Console unchanged and
+adding synchronized Application Layer and Transport Layer views.
 
----
+**AI contribution:** - Parsed the Assignment 2 requirements. -
+Identified the required Browsing, Mail and Streaming transport flows. -
+Planned a tabbed Application/Transport interface. - Preserved the
+existing FastAPI backend because the assignment permits protocol
+simulation and the backend only serves static files.
 
-# 2. Project Planning
+**Result:** The existing two-panel architecture was retained and the
+right panel was extended.
 
-AI assistance was used during the initial planning stage to understand how the assignment requirements could be converted into a working web application.
+### 2. Index/HTML update
 
-The planning process focused on:
+**Prompt/task:** Provide the complete updated `static/index.html` so it
+is easy to replace the existing file.
 
-- creating exactly two main panels,
-- connecting user activities with protocol visualization,
-- selecting an appropriate technology stack,
-- organizing the project files,
-- designing the protocol sequences,
-- and adding interactive controls.
+**AI contribution:** - Added Application Layer / Transport Layer view
+controls. - Added transport-specific UI containers. - Kept the left-side
+Browse/Mail/Stream actions. - Added fields required by the JavaScript
+renderer.
 
-The project structure was planned around:
+**Result:** The dashboard gained a clear two-view Protocol Observatory.
 
-```text
-main.py
-requirements.txt
-README.md
-AI_USAGE_LOG.md
-REFLECTION.md
+### 3. CSS implementation and debugging
 
-static/
-    index.html
-    styles.css
-    app.js
-    favicon.svg
-```
+**Prompt/task:** Update the stylesheet for the Assignment 2 transport
+visualization.
 
----
+**AI contribution:** - Added styles for the view switch. - Added TCP
+flag badges. - Added transport fields and state indicators. - Added
+transport timing and packet highlighting styles. - Added responsive
+behavior.
 
-# 3. HTML Development
+**Debugging issue:** The Assignment 2 CSS was initially nested inside an
+existing media-query block, so the desktop browser did not apply the
+view-switch styling.
 
-AI assistance was used to help structure the HTML interface.
+**Correction:** The CSS was moved outside the media-query scope and
+selectors were aligned with the HTML structure.
 
-The HTML was organized around two major panels.
+**Result:** The Application Layer / Transport Layer switch displayed
+correctly.
 
-```text
-Left Panel
-Activity Console
+### 4. Transport-layer JavaScript
 
-Right Panel
-Protocol Observatory
-```
+**Prompt/task:** Replace the existing `app.js` with an Assignment 2
+implementation supporting synchronized Application and Transport views.
 
-The left panel contains the application activities:
+**AI contribution:** - Created transport flow data for Browsing, Mail
+and Streaming. - Added DNS/UDP representation. - Added TCP
+SYN/SYN-ACK/ACK handshake. - Added data segments with
+Seq/Ack/Win/Flags/Length. - Added FIN/ACK teardown. - Added TCP state
+information. - Added synchronization between application steps and
+transport steps. - Added Previous, Next, Pause/Resume and Replay
+behavior. - Added packet/timeline animation. - Added activity log
+integration.
 
-- Browsing
-- Email
-- Streaming
+### 5. TCP correctness iteration
 
-The right panel contains:
+**Prompt/task:** Test the generated transport behavior and correct any
+TCP state/sequence issues.
 
-- current flow information,
-- protocol step,
-- protocol name,
-- latency,
-- timeline,
-- client/server visualization,
-- message inspector,
-- navigation controls.
+**AI contribution:** - Reviewed the simulated sequence and
+acknowledgement progression. - Kept SYN consumption of one sequence
+number. - Used ACK values that acknowledge the next expected byte. -
+Kept pure ACK segments at zero payload length. - Separated SMTP
+application-level QUIT/221 messages from the later TCP FIN teardown. -
+Used TIME-WAIT as the final client-side state in the simulated teardown.
 
-The generated HTML suggestions were adapted to the actual project requirements and interface design.
+**Result:** Browsing, Mail and Streaming were tested through the TCP
+teardown stage.
 
----
+### 6. Browser synchronization
 
-# 4. CSS Development
+**Prompt/task:** Ensure the entered browser hostname is reflected in the
+simulated DNS/HTTP fields.
 
-AI assistance was used to generate and improve ideas for the visual design.
+**AI contribution:** - Updated the browser flow data using the entered
+hostname before starting the simulation.
 
-The CSS development focused on:
+**Result:** The simulation can display the user-entered browsing target
+rather than a fixed hostname in relevant fields.
 
-- two-panel layout,
-- dark interface design,
-- cards,
-- buttons,
-- activity tabs,
-- protocol timeline,
-- client/server visualization,
-- packet arrows,
-- status indicators,
-- message inspector,
-- responsive behavior,
-- and visual animations.
-
-The CSS was modified during development to match the final NetLens interface.
-
-The final styling was not treated as a direct unmodified AI output.
-
----
-
-# 5. JavaScript Development
-
-JavaScript was the main component responsible for making the interface interactive.
-
-AI assistance was used to help organize:
-
-- activity selection,
-- protocol step arrays,
-- navigation controls,
-- request/response classification,
-- protocol message display,
-- timeline updates,
-- activity status,
-- pause/resume behavior,
-- replay functionality,
-- and client/server packet animation.
-
-The final JavaScript contains predefined protocol sequences for:
-
-```text
-Browsing
-Email
-Streaming
-```
-
----
-
-# 6. Browsing Protocol Simulation
-
-AI assistance was used to help organize the browsing protocol sequence.
-
-The final browsing flow is:
-
-```text
-DNS Query
-↓
-DNS Response
-↓
-HTTP GET Request
-↓
-HTTP Response
-```
-
-The simulation displays representative messages such as:
-
-```text
-DNS Query
-example.com
-```
-
-and:
-
-```http
-GET / HTTP/1.1
-Host: example.com
-```
-
-followed by an HTTP response.
-
-The protocol sequence was reviewed and adapted for the educational purpose of the project.
-
----
-
-# 7. Email Protocol Simulation
-
-AI assistance was used to help organize the SMTP sequence.
-
-The final sequence is:
-
-```text
-DNS MX Lookup
-↓
-SMTP Service Ready
-↓
-EHLO Command
-↓
-EHLO Response
-↓
-MAIL FROM
-↓
-Sender Accepted
-↓
-RCPT TO
-↓
-Recipient Accepted
-↓
-DATA Command
-↓
-Start Mail Input
-↓
-Message Body
-↓
-Message Accepted
-↓
-QUIT
-↓
-SMTP Session Closed
-```
+### 7. Streaming control correction
 
-Representative SMTP messages include:
+**Prompt/task:** Check Pause/Resume and stream timer behavior.
 
-```text
-220 Service Ready
-```
+**AI contribution:** - Adjusted the stream clock so it can resume
+without resetting unexpectedly. - Ensured the stream timer stops when
+the flow completes.
 
-```text
-EHLO netlens.local
-```
+**Result:** Streaming controls and visualization state remain
+consistent.
 
-```text
-MAIL FROM:<sender@example.com>
-```
+## Testing Evidence
 
-```text
-RCPT TO:<receiver@example.com>
-```
+The completed implementation was manually tested in the browser for:
 
-```text
-DATA
-```
+### Browsing
 
-```text
-QUIT
-```
+-   DNS/UDP
+-   TCP handshake
+-   HTTP request/response
+-   TCP teardown
+-   Final ACK / TIME-WAIT
 
-The response codes and command sequence were checked during development to maintain consistency with the intended SMTP demonstration.
+### Mail
 
----
+-   SMTP conversation over TCP
+-   TCP teardown
+-   Final ACK / TIME-WAIT
 
-# 8. Streaming Protocol Simulation
+### Streaming
 
-AI assistance was used to help organize the simplified streaming sequence.
+-   Selected media quality
+-   Manifest/segment transfer
+-   TCP teardown
+-   Final ACK / TIME-WAIT
 
-The final sequence is:
+Screenshots of these completed flows should be retained as the visual
+evidence for the submission.
 
-```text
-DNS Query
-↓
-DNS Response
-↓
-Manifest Request
-↓
-Manifest Response
-↓
-Segment 001 Request
-↓
-Segment 001 Response
-↓
-Segment 002 Request
-↓
-Segment 002 Response
-```
+## AI-Assisted Development Summary
 
-The simulation represents a simplified HTTP-based media streaming workflow.
+AI was not used only to generate the final code. It was used iteratively
+for: 1. requirement interpretation 2. architecture 3. code generation 4.
+debugging 5. protocol-state correction 6. UI/CSS debugging 7. testing
+guidance 8. documentation
 
-It does not implement an actual streaming server.
-
----
-
-# 9. Interactive Controls
-
-AI assistance was also used to plan the protocol navigation controls.
-
-The interface includes:
-
-```text
-Previous
-Pause
-Next
-Replay
-```
-
-These controls allow the user to:
-
-- move backward,
-- pause the simulation,
-- move forward,
-- restart the sequence.
-
-The controls were implemented and tested in the browser.
-
----
-
-# 10. Debugging Assistance
-
-AI assistance was used during debugging when errors or unexpected behavior appeared during development.
-
-Examples of debugging areas included:
-
-- JavaScript event handling,
-- DOM element selection,
-- protocol step transitions,
-- activity status updates,
-- request/response status display,
-- frontend/backend integration,
-- and FastAPI configuration.
-
-One important implementation change was wrapping the JavaScript initialization inside:
-
-```javascript
-DOMContentLoaded
-```
-
-This ensured that the required HTML elements were available before JavaScript attempted to access them.
-
----
-
-# 11. FastAPI Assistance
-
-AI assistance was used to structure the FastAPI backend.
-
-The backend provides the main page and serves static frontend files.
-
-The core structure is:
-
-```python
-from fastapi import FastAPI
-from fastapi.responses import FileResponse
-from fastapi.staticfiles import StaticFiles
-
-app = FastAPI()
-
-app.mount("/static", StaticFiles(directory="static"), name="static")
-
-@app.get("/")
-def home():
-    return FileResponse("static/index.html")
-```
-
-The application is executed using Uvicorn.
-
-Example:
-
-```bash
-uvicorn main:app --reload
-```
-
----
-
-# 12. Documentation Assistance
-
-AI assistance was used to prepare and organize project documentation.
-
-Documentation assistance included:
-
-- README structure,
-- feature descriptions,
-- installation instructions,
-- protocol explanations,
-- project architecture,
-- limitations,
-- future improvements,
-- AI usage documentation,
-- and project reflection.
-
-The documentation was reviewed and adjusted according to the actual implemented project.
-
----
-
-# 13. Human Verification and Modification
-
-AI was used as an assistance tool rather than as the sole developer.
-
-The project was manually reviewed and modified during development.
-
-Human verification included:
-
-- opening the project in Visual Studio Code,
-- installing dependencies,
-- running the FastAPI server,
-- opening the application in a browser,
-- testing the activity tabs,
-- testing protocol sequences,
-- testing buttons,
-- checking protocol messages,
-- checking status changes,
-- checking the frontend layout,
-- and fixing implementation issues.
-
-The final implementation therefore combines AI-assisted development with manual coding, testing, and modification.
-
----
-
-# 14. Technologies Used
-
-The project uses:
-
-```text
-Python
-FastAPI
-Uvicorn
-HTML5
-CSS3
-JavaScript
-Visual Studio Code
-```
-
----
-
-# 15. AI Contribution Summary
-
-AI assistance contributed primarily to:
-
-| Area | AI Assistance |
-|---|---|
-| Project Planning | High |
-| HTML Structure | Medium |
-| CSS Ideas | High |
-| JavaScript Organization | High |
-| Protocol Sequence Planning | High |
-| Debugging | Medium |
-| Documentation | High |
-| Testing Ideas | Medium |
-| Final Verification | Human |
-| Final Project Assembly | Human |
-
-The table describes the nature of assistance rather than claiming that the AI independently created the complete project.
-
----
-
-# 16. Example Development Workflow
-
-A typical development workflow was:
-
-```text
-Assignment Requirement
-        ↓
-Project Planning
-        ↓
-AI-Assisted Design
-        ↓
-Code Implementation
-        ↓
-Run in VS Code
-        ↓
-Browser Testing
-        ↓
-Identify Issues
-        ↓
-Debug and Modify
-        ↓
-Retest
-        ↓
-Documentation
-```
-
----
-
-# 17. Reflection on AI Usage
-
-Using AI during the project helped reduce the time required for repetitive development tasks and provided suggestions for structuring the application.
-
-However, the AI suggestions still needed to be understood and tested.
-
-For example, protocol visualization requires the developer to understand the sequence rather than simply copying code.
-
-The development process therefore involved:
-
-- understanding the suggestion,
-- implementing it,
-- testing it,
-- identifying problems,
-- modifying it,
-- and verifying the final behavior.
-
-This helped make the AI-assisted process more useful as a learning activity.
-
----
-
-# 18. What Was Learned Through AI-Assisted Development
-
-The project helped reinforce several concepts.
-
-### Networking
-
-- DNS
-- HTTP
-- SMTP
-- client-server communication
-- request-response communication
-- protocol sequencing
-
-### Programming
-
-- JavaScript event handling
-- arrays of objects
-- DOM manipulation
-- UI state management
-- frontend animations
-
-### Web Development
-
-- FastAPI
-- static file serving
-- HTML structure
-- CSS layouts
-- JavaScript integration
-
-### Software Development
-
-- debugging
-- testing
-- documentation
-- project organization
-
----
-
-# 19. Limitations of AI Assistance
-
-AI-generated suggestions may contain errors or assumptions.
-
-Therefore, AI output was not treated as automatically correct.
-
-The following areas required verification:
-
-- protocol sequence,
-- SMTP commands and response codes,
-- JavaScript behavior,
-- HTML structure,
-- FastAPI configuration,
-- browser behavior.
-
-The final implementation was tested before being considered part of the project.
-
----
-
-# 20. Final Statement
-
-AI was used as a development assistant throughout the NetLens project.
-
-It supported planning, coding ideas, debugging, and documentation.
-
-The final project was manually assembled, tested, modified, and verified by the student.
-
-The AI tool therefore functioned as a development aid while the student remained responsible for understanding, implementing, testing, and presenting the project.
-
----
+The final implementation was tested manually in the browser after the
+AI-assisted iterations.
